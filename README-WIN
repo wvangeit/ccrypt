@@ -1,0 +1,78 @@
+
+                                   ccrypt
+
+   Secure encryption and decryption of files and streams
+     _________________________________________________________________
+
+This file contains instructions specific to the Windows distribution
+of ccrypt. Please see README and the man page for general information
+on usage etc.
+
+INSTALLATION for Windows 95/98/2000/NT/xp/etc:
+==================================================
+
+Download the file ccrypt-XXX.cygwin-i386.zip, and unpack it using your
+favorite tool. Often, double-clicking on the archive will start some
+unpacking wizard. Or on the command line, you can use e.g.:
+
+        unzip ccrypt-XXX.cygwin-i386.zip
+
+If the "unzip" program is unavailable, then use "pkunzip" instead, but
+read the following note first.
+
+NOTE: "pkunzip" is a relatively dumb program. My version of it, which
+came with Windows 98, does not understand long filenames, and you may
+have to type something of the form "pkunzip ccrypt~1.zip". Instead of
+creating a directory, it may decide to dump the files in the current
+working directory, and it may rename them. Use "unzip" instead of
+"pkunzip" if it is available.
+
+If you have "tar" and "gunzip" installed, you may also get the file
+potrace-XXX.cygwin-i386.tar.gz instead of the zip file.
+
+The windows distribution includes an executable file ccrypt.exe, and a
+dynamically linked library cygwin1.dll.  You need to put both
+ccrypt.exe and cygwin1.dll in places where Windows can find them. One
+such place is C:\WINDOWS. Alternatively, you can amend your PATH
+environment variable, by adding something like the following line to
+C:\AUTOEXEC.BAT:
+
+        PATH=%PATH%;C:\DIRECTORY\WHERE\FILES\ARE
+
+If you already have a different version of cygwin installed, you
+cannot use this binary unless you up/downgrade to the version of
+cygwin that comes with the ccrypt distribution. However, there should be
+no problem re-compiling ccrypt under your version of cygwin.
+
+The default executable file is called ccrypt.exe. You should also
+create files ccencrypt.exe, ccdecrypt.exe, and ccat.exe in the same
+directory. These files are identical to ccrypt.exe, but when ccrypt is
+invoked by one of these filenames, its default behavior changes. Under
+Windows, the most fool-proof solution is to make four copies of
+ccrypt.exe and rename them appropriately. If you are running a shell
+under CygWin, you can also create a symbolic link, or you may be able
+to achieve the same effect by creating a shortcut under Windows.
+
+RUNNING:
+==================================================
+
+For non-Windows specific usage information, see the file README.
+
+Ccrypt on Windows runs in much the same way as under Linux and other
+Unix-like operating systems, due to the amazing magic of cygwin
+(http://sources.redhat.com/cygwin/), which simulates a Unix
+environment under Windows.
+
+Note on wildcards: The following command line does not work as
+expected under Windows:
+
+ ccrypt h:\data\*.*
+
+However, each of the following two commands will work as it should:
+
+ ccrypt h:\data\file.txt
+
+ ccrypt h:/data/*.*
+
+I am not sure what causes this behavior. Apparently an inconsistency
+between backslash conversion and wildcard expansion.

@@ -1,0 +1,7 @@
+tables.o: tables.c rijndael.h ../config.h tables.h
+
+rijndael.h:
+
+../config.h:
+
+tables.h:
